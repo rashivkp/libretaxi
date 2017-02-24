@@ -24,7 +24,7 @@ export default class SelectVehicleType extends Action {
   }
 
   /**
-   * Returns list of available vehivle types (motorbike, car).
+   * Returns list of available vehivle types (auto-rickshaw).
    *
    * @return {CompositeResponse} Returns instance of {@link CompositeResponse}
    * which contains {@link TextResponse} and {@link OptionsResponse}.
@@ -34,8 +34,6 @@ export default class SelectVehicleType extends Action {
       .add(new TextResponse({ message: this.t('select') }))
       .add(new OptionsResponse({
         rows: [
-          [{ label: this.t('car'), value: 'car' }],
-          [{ label: this.t('motorbike'), value: 'motorbike' }],
           [{ label: this.t('auto_rickshaw'), value: 'auto_rickshaw' }],
         ],
       }));
@@ -52,8 +50,6 @@ export default class SelectVehicleType extends Action {
     const response = new CompositeResponse();
 
     switch (value) {
-      case 'motorbike':
-      case 'car':
       case 'auto_rickshaw':
         response.add(new TextResponse({ message: '👌 OK!' }));
         response.add(new UserStateResponse({ vehicleType: value }));

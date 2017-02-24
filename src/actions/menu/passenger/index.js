@@ -24,7 +24,7 @@ export default class PassengerIndex extends Action {
   }
 
   /**
-   * Returns list of available taxi types (bike, car and auto_rickshaw ) + settings button.
+   * Returns list of available taxi types (auto_rickshaw ) + settings button.
    *
    * @return {CompositeResponse} Returns instance of {@link CompositeResponse}
    * which contains {@link TextResponse} and {@link OptionsResponse}.
@@ -34,8 +34,6 @@ export default class PassengerIndex extends Action {
       .add(new TextResponse({ message: this.t('choose_taxi_type') }))
       .add(new OptionsResponse({
         rows: [
-          [{ label: this.t('car'), value: 'car' }],
-          [{ label: this.t('motorbike'), value: 'motorbike' }],
           [{ label: this.t('auto_rickshaw'), value: 'auto_rickshaw' }],
           [{ label: this.t('s'), value: 'settings' }],
         ],
@@ -56,8 +54,6 @@ export default class PassengerIndex extends Action {
     const response = new CompositeResponse();
 
     switch (value) {
-      case 'motorbike':
-      case 'car':
       case 'auto_rickshaw':
         response.add(new TextResponse({ message: '👌 OK!' }));
         response.add(new UserStateResponse({ requestedVehicleType: value }));
