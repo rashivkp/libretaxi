@@ -36,6 +36,7 @@ export default class SelectVehicleType extends Action {
         rows: [
           [{ label: this.t('car'), value: 'car' }],
           [{ label: this.t('motorbike'), value: 'motorbike' }],
+          [{ label: this.t('auto_rickshaw'), value: 'auto_rickshaw' }],
         ],
       }));
   }
@@ -53,6 +54,7 @@ export default class SelectVehicleType extends Action {
     switch (value) {
       case 'motorbike':
       case 'car':
+      case 'auto_rickshaw':
         response.add(new TextResponse({ message: '👌 OK!' }));
         response.add(new UserStateResponse({ vehicleType: value }));
         response.add(new RedirectResponse({ path: 'driver-explain-checkins' }));
